@@ -1,133 +1,268 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <link rel="icon" href="logo.png" type="image/png">
-  <meta property="og:title" content="Lali Kumari | Portfolio" />
-<meta property="og:description" content="Founder of Lyzonix Technologies | Web Developer" />
-<meta property="og:image" content="https://lalikumari6207-eng.github.io/Portfolio-lalikuamri/logo.png" />
-<meta property="og:url" content="https://lalikumari6207-eng.github.io/Portfolio-lalikuamri/" />
-<meta property="og:type" content="website" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lali Kumari | Portfolio</title>
-  
-  <link rel="icon" type="image/png" sizes="32x32" href="file_00000000d4cc71faaebed0118026eafa.png">
-<link rel="apple-touch-icon" href="file_00000000d4cc71faaebed0118026eafa.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lali Kumari | Portfolio</title>
 
-  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
+<link rel="icon" href="logo.png" type="image/png">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background: radial-gradient(circle at top,#0f2027,#0b0f19);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* TOP BAR */
+header{
+  padding:80px 20px 40px;
   text-align:center;
 }
 
-header {
-  padding: 60px 20px;
-  font-size: 40px;
-  font-weight: 700;
-  background: linear-gradient(90deg,#ff4b2b,#ff416c);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+header h1{
+  font-size:42px;
+  background:linear-gradient(90deg,#ff4b2b,#ff416c,#00f7ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+header p{
+  margin-top:10px;
+  opacity:0.8;
 }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 30px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  margin-bottom: 30px;
-  transition: 0.3s;
+/* MENU */
+.menu-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  font-size:28px;
+  cursor:pointer;
+  z-index:1000;
 }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
+.sidebar{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:250px;
+  height:100%;
+  background:#111827;
+  padding:20px;
+  transition:0.3s;
+  z-index:999;
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #00f7ff;
-}
-
-p {
-  line-height: 1.7;
-  font-size: 16px;
-}
-
-img {
-  width: 250px;
-  height: auto;
-  border-radius: 15px;
-  margin: 10px;
-}
-
-.links a {
-  display:inline-block;
-  margin:10px;
-  padding:12px 20px;
-  border-radius:30px;
-  background: linear-gradient(90deg,#ff416c,#ff4b2b);
+.sidebar a{
+  display:block;
   color:#fff;
   text-decoration:none;
-  font-size:14px;
+  padding:15px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar a:hover{
+  background:#ff416c;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:20px;
+}
+
+.hero img{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #ff416c;
+  margin:10px;
+}
+
+/* SECTIONS */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  padding:25px;
+  margin:20px 0;
+  border-radius:18px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
   transition:0.3s;
 }
 
-.links a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #ff416c;
+.card:hover{
+  transform:translateY(-8px);
 }
 
-footer {
-  margin-top:40px;
+h2{
+  color:#00f7ff;
+  margin-bottom:10px;
+}
+
+/* SKILLS */
+.skills span{
+  display:inline-block;
+  background:#ff416c;
+  padding:8px 12px;
+  margin:5px;
+  border-radius:20px;
+  font-size:13px;
+}
+
+/* LINKS */
+.links a{
+  display:inline-block;
+  margin:8px;
+  padding:10px 16px;
+  border-radius:25px;
+  background:linear-gradient(90deg,#ff416c,#ff4b2b);
+  color:#fff;
+  text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
   padding:20px;
-  font-size:14px;
-  opacity:0.7;
+  opacity:0.6;
 }
-
-  </style>
-  <meta name="google-site-verification" content="wyPJCq7rLL8e9uipEopt-ItztYq84U0DS2bgwVMjCx8" />
+</style>
 </head>
-<body>  <header>
-    I'm Lali Kumari 🚀
-  <p> Lali kumari is a Founder & CEO of Lyzonix Technologies | Passionate Web Developer & Tech Enthusiast from Bihar, India </p>
-  </header>  <div class="container"><div class="card">
-  <h2>👩‍💻 About Me</h2>
-  <p>
-    Hello, I’m Lali Kumari, the CEO and Founder of Lyzonix Technologies.<br><br>
 
-    I am from Begusarai, Bihar, India, and I have completed my Bachelor of Science in Chemistry, which has helped me build strong analytical and problem-solving abilities.<br><br>
+<body>
 
-    I have a strong passion for technology and software development. I have developed skills in HTML, CSS, JavaScript, Node.js, and Firebase, and I enjoy building modern, responsive, and user-friendly websites and applications.<br><br>
+<!-- MENU -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    Through my company, Lyzonix Technologies, I am working on turning innovative ideas into real-world digital solutions and continuously improving my technical and entrepreneurial skills.<br><br>
-
-    In the future, I plan to pursue an MBA to strengthen my knowledge in business management and scale my company to a higher level.<br><br>
-
-    I am a dedicated learner who is always open to new challenges, continuous growth, and innovation in the field of technology and business. 🚀
-  </p>
-
-  <img src="1775923627380~2.png" alt="photo">
-<img src="1775923825931~2.png" alt="photo">
-
-  <div class="links">
-    <a href="mailto:lalikumari6207@gmail.com">📧 Email</a>
-    <a href="https://in.linkedin.com/in/lali-bhardwaj-ceo" target="_blank">💼 LinkedIn</a>
-    <a href="https://youtube.com/@explorewithlali04?si=xPu6RjPnm39uuN1y" target="_blank">▶ YouTube</a>
-    <a href="https://github.com/account" target="_blank">💻 GitHub</a>
-    <a href="https://lalikumari6207-eng.github.io/Lyzonix/" target="_blank">🌐 Website</a>
-  </div>
+<div class="sidebar" id="sidebar">
+  <a href="#about">About Me</a>
+  <a href="#company">Company</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#achievements">Achievements</a>
 </div>
 
-  </div>  <footer>
-    © 2026 Lali Kumari | Lyzonix Technologies
-  </footer></body>
-</html>                                                                                                                                                                                                                                                        
+<!-- HERO -->
+<header>
+  <h1>I'm Lali Kumari 🚀</h1>
+  <p>Founder & CEO of Lyzonix Technologies & Sanjhex | Web Developer | Begusarai Bihar, India</p>
+</header>
+
+<div class="hero">
+  <img src="1775923627380~2.png">
+  <img src="1775923825931~2.png">
+</div>
+
+<div class="container">
+
+<!-- ABOUT -->
+<div class="card" id="about">
+<h2>👩‍💻 About Me</h2>
+<p>
+I am Lali Kumari, Founder & CEO of Lyzonix Technologies and Sanjhex.<br><br>
+
+I am from Bihar and have completed B.Sc Chemistry which gave me strong analytical thinking.<br><br>
+
+  passionate about building innovative digital products, modern businesses, and scalable startup ideas. Along with her entrepreneurial journey,  a strong interest in technology, web development, and brand creation. also planning to pursue an MBA in the future to further strengthen for my business and leadership skills.
+my vision is to build impactful companies that combine technology, creativity, and business strategy to create real-world value.
+</p>
+</div>
+
+<!-- COMPANY -->
+<div class="card" id="company">
+<h2>🏢 Companies</h2>
+<p><b>Lyzonix Technologies:</b> IT & HR Services Company</p>
+<p><b>Sanjhex:</b> Unisex Streetwear Clothing Brand (Fashion Startup)</p>
+  <p>Lyzonix Technologies is a growing technology and business solutions company founded by Lali Kumari. The company focuses on providing IT services and HR solutions, helping startups and businesses build their digital presence through modern, practical, and scalable solutions.
+Along with this, the company has also launched a fashion venture called Sanjhex, a unisex streetwear brand designed for today’s youth. Sanjhex focuses on modern, minimal, and expressive clothing that reflects individuality and confidence. It is currently in its early stage, where feedback and design improvements are being worked on before a full launch.
+Together, both ventures represent a vision of combining technology and creativity to build impactful businesses that serve both digital and lifestyle needs. The goal is to grow these brands into strong identities in their respective industries.</p>
+</div>
+
+<!-- SKILLS -->
+<div class="card" id="skills">
+<h2>⚡ Skills</h2>
+<div class="skills">
+  <span>HTML</span>
+  <span>CSS</span>
+  <span>JavaScript</span>
+  <span>Node.js</span>
+  <span>Firebase</span>
+  <span>UI/UX Design</span>
+  <span>Business Strategy</span>
+  <span>react.js</span>
+  <span>vue.js </span>
+  <span>angular</span>
+</div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="card" id="experience">
+<h2>💼 Experience</h2>
+<p>
+• Wipro – Portfolio Assistant<br>
+• Sopra Steria – 5 Months Internship<br>
+• School/College Coding Club Member<br>
+• Chemistry Lab & Experiment Intern<br>
+• Social Work Volunteer (NGO Activities)
+</p>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="card" id="achievements">
+<h2>🏆 Achievements</h2>
+<p>
+• College Coding Club Contribution<br>
+• Chemistry Practical & Lab Excellence<br>
+• Built multiple web projects<br>
+• Founder of 2 companies<br>
+• Active in tech + social initiatives
+</p>
+</div>
+
+<!-- LINKS -->
+<div class="card">
+<h2>📩 Connect With Me</h2>
+<div class="links">
+  <a href="mailto:lalikumari6207@gmail.com">Email</a>
+  <a href="https://in.linkedin.com/in/lali-bhardwaj-ceo">LinkedIn</a>
+  <a href="https://youtube.com/@explorewithlali04">YouTube</a>
+  <a href="https://github.com/account">GitHub</a>
+</div>
+</div>
+
+</div>
+
+<footer>
+© 2026 Lali Kumari | Lyzonix Technologies | Sanjhex
+</footer>
+
+<script>
+function toggleMenu(){
+  let s = document.getElementById("sidebar");
+  if(s.style.left === "0px"){
+    s.style.left = "-260px";
+  }else{
+    s.style.left = "0px";
+  }
+}
+</script>
+
+</body>
+</html>
