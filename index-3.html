@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lali Kumari | Founder &amp; CEO — Lyzonix Technologies &amp; Sanjhex</title>
+<meta name="description" content="Lali Kumari — Founder & CEO of Lyzonix Technologies and Sanjhex. Building digital solutions and modern streetwear." />
+
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0a0a12;
+    --ink-soft:#11121c;
+    --panel:#15161f;
+    --line: rgba(245,240,230,0.09);
+    --gold:#d4af6a;
+    --gold-soft:#e8cd96;
+    --rose:#c97a6d;
+    --cream:#f5f0e6;
+    --muted: #9a96a8;
+    --maxw: 1140px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+
+  ::selection{ background:var(--gold); color:#1a1208; }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:24px;
+    height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+
+  a{ color:inherit; }
+
+  /* ===== noise / texture overlay ===== */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+    opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== LOADER ===== */
+  #loader{
+    position:fixed;
+    inset:0;
+    background:var(--ink);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:opacity .6s ease, visibility .6s ease;
+    gap:18px;
+  }
+  #loader.hide{ opacity:0; visibility:hidden; }
+  .loader-mark{
+    font-family:'Fraunces', serif;
+    font-size:15px;
+    letter-spacing:0.35em;
+    color:var(--gold);
+  }
+  .loader-bar{
+    width:160px;
+    height:1px;
+    background:var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .loader-bar::after{
+    content:"";
+    position:absolute;
+    left:-40%;
+    top:0;
+    width:40%;
+    height:100%;
+    background:var(--gold);
+    animation:loadsweep 1.1s ease-in-out infinite;
+  }
+  @keyframes loadsweep{
+    0%{ left:-40%; }
+    100%{ left:100%; }
+  }
+
+  /* ===== BG CANVAS ===== */
+  canvas#bg{
+    position:fixed;
+    top:0; left:0;
+    z-index:0;
+    opacity:0.5;
+  }
+
+  /* ===== NAV ===== */
+  nav.topnav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:500;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 5vw;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(to bottom, rgba(10,10,18,0.85), transparent);
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:0.02em;
+  }
+  .brand span{ color:var(--gold); }
+
+  .menu-btn{
+    width:42px; height:42px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    background:rgba(255,255,255,0.02);
+    transition:.3s;
+    flex-direction:column;
+    gap:4px;
+  }
+  .menu-btn:hover{ border-color:var(--gold); }
+  .menu-btn span{
+    width:16px; height:1px; background:var(--cream); display:block;
+  }
+
+  .sidebar{
+    position:fixed;
+    top:0; right:-340px;
+    width:320px;
+    height:100%;
+    background:var(--ink-soft);
+    border-left:1px solid var(--line);
+    transition:right .45s cubic-bezier(.65,0,.35,1);
+    z-index:600;
+    padding:100px 40px 40px;
+  }
+  .sidebar.open{ right:0; }
+  .sidebar .eyebrow{ margin-bottom:30px; }
+  .sidebar a{
+    display:block;
+    padding:14px 0;
+    text-decoration:none;
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    color:var(--cream);
+    border-bottom:1px solid var(--line);
+    transition:.25s;
+  }
+  .sidebar a:hover{ color:var(--gold); padding-left:8px; }
+
+  .sidebar-close{
+    position:absolute;
+    top:28px; right:28px;
+    width:38px; height:38px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    font-size:18px;
+  }
+
+  .scrim{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(2px);
+    z-index:550;
+    opacity:0; visibility:hidden;
+    transition:.4s;
+  }
+  .scrim.show{ opacity:1; visibility:visible; }
+
+  /* ===== HERO ===== */
+  header.hero{
+    position:relative;
+    z-index:1;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:140px 5vw 80px;
+  }
+
+  .hero-photos{
+    display:flex;
+    gap:18px;
+    margin-bottom:38px;
+    opacity:0;
+    animation:riseIn 1s ease forwards .15s;
+  }
+  .hero-photos img{
+    width:108px; height:108px;
+    object-fit:cover;
+    border-radius:50%;
+    border:1px solid var(--line);
+    box-shadow:0 0 0 6px rgba(212,175,106,0.06), 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .hero-photos img:first-child{ margin-top:14px; }
+
+  .seal{
+    width:26px; height:26px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    color:var(--gold);
+    margin:0 10px;
+  }
+
+  header.hero .eyebrow{
+    justify-content:center;
+    margin-bottom:22px;
+    opacity:0;
+    animation:riseIn 1s ease forwards .3s;
+  }
+  header.hero .eyebrow::after{
+    content:"";
+    width:24px; height:1px;
+    background:var(--gold);
+  }
+
+  header.hero h1{
+    font-size:clamp(40px, 8vw, 92px);
+    line-height:1.02;
+    font-weight:600;
+    opacity:0;
+    animation:riseIn 1s ease forwards .45s;
+  }
+  header.hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    background:linear-gradient(100deg,var(--gold-soft),var(--rose));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  header.hero .role{
+    margin-top:22px;
+    font-size:clamp(15px,2.4vw,19px);
+    color:var(--muted);
+    max-width:560px;
+    opacity:0;
+    animation:riseIn 1s ease forwards .6s;
+  }
+  header.hero .role b{ color:var(--cream); font-weight:600; }
+
+  .hero-cta{
+    display:flex;
+    gap:16px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+    opacity:0;
+    animation:riseIn 1s ease forwards .75s;
+  }
+
+  .btn{
+    padding:14px 30px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:.3s;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-solid{
+    background:var(--gold);
+    color:#1a1208;
+  }
+  .btn-solid:hover{ background:var(--gold-soft); transform:translateY(-2px); }
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--cream);
+  }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(22px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* stat strip */
+  .stats{
+    display:flex;
+    gap:60px;
+    margin-top:80px;
+    flex-wrap:wrap;
+    justify-content:center;
+    opacity:0;
+    animation:riseIn 1s ease forwards .9s;
+  }
+  .stat{ text-align:center; }
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-size:36px;
+    color:var(--gold-soft);
+  }
+  .stat .lbl{
+    font-size:12px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin-top:4px;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:36px; left:50%;
+    transform:translateX(-50%);
+    width:1px; height:50px;
+    background:linear-gradient(var(--gold), transparent);
+    opacity:0.6;
+  }
+
+  /* ===== SECTION SHELL ===== */
+  main{ position:relative; z-index:1; }
+  section{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:130px 5vw 0;
+    scroll-margin-top:60px;
+  }
+  section:last-of-type{ padding-bottom:130px; }
+
+  .section-head{
+    margin-bottom:56px;
+    max-width:640px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,4.4vw,46px);
+    margin-top:14px;
+    font-weight:600;
+  }
+  .section-head p.lead{
+    margin-top:16px;
+    color:var(--muted);
+    font-size:16px;
+    max-width:560px;
+  }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .8s ease, transform .8s cubic-bezier(.2,.6,.2,1);
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ===== ABOUT ===== */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:start;
+  }
+  .about-grid p{
+    color:#cfc9d8;
+    font-size:16.5px;
+    margin-bottom:18px;
+  }
+  .about-grid p:last-child{ margin-bottom:0; }
+
+  .pull-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:34px;
+    position:relative;
+  }
+  .pull-card::before{
+    content:"“";
+    font-family:'Fraunces', serif;
+    font-size:80px;
+    color:var(--gold);
+    opacity:0.35;
+    position:absolute;
+    top:0; left:24px;
+    line-height:1;
+  }
+  .pull-card p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:21px;
+    line-height:1.5;
+    color:var(--cream);
+    margin-top:30px;
+  }
+  .pull-card .tag{
+    margin-top:22px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:0.05em;
+  }
+
+  /* ===== COMPANIES ===== */
+  .company-list{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .company-row{
+    background:var(--ink-soft);
+    padding:38px 40px;
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:30px;
+    transition:.35s;
+  }
+  .company-row:hover{ background:var(--panel); }
+  .company-idx{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:0.05em;
+  }
+  .company-row h3{
+    font-size:24px;
+    margin-bottom:6px;
+  }
+  .company-tagline{
+    color:var(--gold-soft);
+    font-size:13px;
+    font-family:'JetBrains Mono', monospace;
+    margin-bottom:14px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .company-row p{
+    color:#cfc9d8;
+    font-size:15px;
+    max-width:620px;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .skills span{
+    display:inline-flex;
+    align-items:center;
+    padding:11px 20px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    font-size:14px;
+    color:var(--cream);
+    transition:.3s;
+  }
+  .skills span:hover{
+    border-color:var(--gold);
+    color:var(--gold-soft);
+    transform:translateY(-3px);
+  }
+
+  /* ===== TIMELINE (Experience) ===== */
+  .timeline{
+    position:relative;
+    padding-left:30px;
+    border-left:1px solid var(--line);
+  }
+  .tl-item{
+    position:relative;
+    padding-bottom:42px;
+  }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-35px; top:4px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 4px rgba(212,175,106,0.15);
+  }
+  .tl-item h3{ font-size:18px; font-weight:600; }
+  .tl-item .meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    margin:4px 0 8px;
+  }
+  .tl-item p{ color:var(--muted); font-size:14.5px; }
+
+  /* ===== ACHIEVEMENTS ===== */
+  .ach-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .ach-cell{
+    background:var(--ink-soft);
+    padding:34px 28px;
+    transition:.3s;
+  }
+  .ach-cell:hover{ background:var(--panel); }
+  .ach-cell .mark{ font-size:22px; color:var(--gold); margin-bottom:14px; }
+  .ach-cell h4{ font-size:16px; font-weight:600; margin-bottom:6px; }
+  .ach-cell p{ font-size:13.5px; color:var(--muted); }
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
+  }
+  .testi-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .testi-stars{ color:var(--gold); font-size:14px; letter-spacing:2px; }
+  .testi-quote{
+    font-size:14.5px;
+    color:#cfc9d8;
+    line-height:1.65;
+  }
+  .testi-person{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:auto;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+  .testi-avatar{
+    width:46px; height:46px;
+    border-radius:50%;
+    flex-shrink:0;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .testi-avatar svg{ width:100%; height:100%; display:block; }
+  .testi-person .who b{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+  }
+  .testi-person .who span{
+    display:block;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .testi-note{
+    margin-top:28px;
+    font-size:12.5px;
+    color:var(--muted);
+    border-left:2px solid var(--line);
+    padding-left:14px;
+  }
+
+  /* ===== SHOP / SANJHEX ===== */
+  .shop-banner{
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:48px;
+    background:
+      repeating-linear-gradient(135deg, transparent, transparent 18px, rgba(212,175,106,0.04) 18px, rgba(212,175,106,0.04) 19px),
+      var(--ink-soft);
+    margin-bottom:36px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+  }
+  .shop-banner h3{ font-size:26px; }
+  .shop-banner p{ color:var(--muted); font-size:14px; margin-top:8px; max-width:420px; }
+  .stitch{
+    border-top:1px dashed var(--line);
+    margin:60px 0;
+    position:relative;
+  }
+  .stitch span{
+    position:absolute;
+    top:-9px; left:50%;
+    transform:translateX(-50%);
+    background:var(--ink);
+    padding:0 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+  }
+
+  .shop{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+  }
+  .product{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
+    text-align:center;
+    transition:.3s;
+  }
+  .product:hover{ transform:translateY(-6px); border-color:var(--gold); }
+  .product .ph{
+    aspect-ratio:1/1;
+    border-radius:10px;
+    background:linear-gradient(135deg, #1c1d29, #26222f);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:14px;
+  }
+  .product h4{ font-size:15px; margin-bottom:4px; }
+  .product .price{ color:var(--gold-soft); font-size:13px; margin-bottom:12px; }
+
+  button, .btn-mini{
+    border-radius:999px;
+    border:1px solid var(--gold);
+    background:transparent;
+    color:var(--gold);
+    padding:9px 18px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+  }
+  button:hover, .btn-mini:hover{ background:var(--gold); color:#1a1208; }
+
+  /* ===== CONNECT ===== */
+  .connect-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .connect-row{
+    background:var(--ink-soft);
+    padding:24px 34px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-decoration:none;
+    color:var(--cream);
+    transition:.3s;
+  }
+  .connect-row:hover{ background:var(--panel); padding-left:42px; }
+  .connect-row .label{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+  }
+  .connect-row .arrow{
+    color:var(--gold);
+    font-size:18px;
+    transition:.3s;
+  }
+  .connect-row:hover .arrow{ transform:translateX(6px); }
+
+  /* ===== FOOTER ===== */
+  footer{
+    text-align:center;
+    padding:50px 20px 40px;
+    color:var(--muted);
+    font-size:13px;
+    border-top:1px solid var(--line);
+    margin-top:80px;
+  }
+  footer b{ color:var(--gold-soft); }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:780px){
+    .about-grid{ grid-template-columns:1fr; }
+    .company-row{ grid-template-columns:1fr; }
+    section{ padding-top:90px; }
+    .hero-photos img{ width:84px; height:84px; }
+    .stats{ gap:36px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, .menu-btn:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+  <div class="loader-mark">L Y Z O N I X</div>
+  <div class="loader-bar"></div>
+</div>
+
+<canvas id="bg"></canvas>
+
+<nav class="topnav">
+  <div class="brand">Lali <span>Kumari</span></div>
+  <div class="menu-btn" id="menuBtn" onclick="toggleMenu()" role="button" aria-label="Open menu" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim" onclick="toggleMenu()"></div>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-close" onclick="toggleMenu()">✕</div>
+  <div class="eyebrow">Navigate</div>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#company" onclick="toggleMenu()">Companies</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#experience" onclick="toggleMenu()">Experience</a>
+  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+  <a href="#testimonials" onclick="toggleMenu()">Testimonials</a>
+  <a href="#shop" onclick="toggleMenu()">Sanjhex</a>
+  <a href="#connect" onclick="toggleMenu()">Connect</a>
+</div>
+
+<header class="hero">
+  <div class="hero-photos">
+    <img src="1775923627380~2.png" alt="Lali Kumari portrait">
+    <img src="1775047476034.png" alt="Lali Kumari">
+  </div>
+
+  <div class="eyebrow">Founder &amp; CEO</div>
+  <h1>I'm <em>Lali Kumari</em></h1>
+  <p class="role">Building <b>Lyzonix Technologies</b>, an IT solutions company, and <b>Sanjhex</b>, a unisex streetwear label — execution over ideas, consistency over shortcuts.</p>
+
+  <div class="hero-cta">
+    <a href="#company" class="btn btn-solid">View My Companies</a>
+    <a href="#connect" class="btn btn-ghost">Get In Touch</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num">2</div><div class="lbl">Companies Founded</div></div>
+    <div class="stat"><div class="num">10+</div><div class="lbl">Skills &amp; Tools</div></div>
+    <div class="stat"><div class="num">B.Sc</div><div class="lbl">Chemistry</div></div>
+  </div>
+
+  <div class="scroll-cue"></div>
+</header>
+
+<main>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="eyebrow">Who I Am</div>
+    <h2 class="section-head" style="margin-bottom:48px;">About Me</h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="reveal">
+      <p>I am Lali Kumari, Founder &amp; CEO of Lyzonix Technologies and Sanjhex.</p>
+      <p>I am from Bihar, India, and have completed a B.Sc in Chemistry — a background that gave me strong analytical thinking and an eye for detail I now apply to building products and brands.</p>
+      <p>I am a visionary entrepreneur focused on building scalable digital solutions and impactful brands. I don't just follow trends — I create them. With a strong foundation in technology and business, I work on developing innovative IT solutions that help businesses grow faster and smarter, while also leading the creation of Sanjhex, a unisex streetwear brand designed to redefine modern youth fashion.</p>
+      <p>I believe in execution over ideas, consistency over shortcuts, and building something that creates real value. My mission is to establish Lyzonix as a powerful multi-service company and launch products that stand out in competitive markets.</p>
+    </div>
+
+    <div class="reveal pull-card">
+      <p>I don't just follow trends — I create them.</p>
+      <div class="tag">— LALI KUMARI, FOUNDER &amp; CEO</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company">
+  <div class="reveal section-head">
+    <div class="eyebrow">What I'm Building</div>
+    <h2>Companies</h2>
+    <p class="lead">Two ventures, one philosophy — build things that create real, lasting value.</p>
+  </div>
+
+  <div class="company-list reveal">
+    <div class="company-row">
+      <div class="company-idx">01 / TECH</div>
+      <div>
+        <h3>Lyzonix Technologies</h3>
+        <div class="company-tagline">IT Solutions &amp; Digital Services</div>
+        <p>A growing startup focused on delivering innovative IT solutions — including web development, digital solutions, and support — that help businesses build a strong digital presence while simplifying operations. Beyond services, Lyzonix is also building its own products, creating a true ecosystem of technology and business innovation.</p>
+      </div>
+    </div>
+    <div class="company-row">
+      <div class="company-idx">02 / FASHION</div>
+      <div>
+        <h3>Sanjhex</h3>
+        <div class="company-tagline">Unisex Streetwear, by Lyzonix</div>
+        <p>A unisex streetwear clothing brand bringing trendy, comfortable, and affordable fashion to the youth — oversized tees, hoodies, and casual wear built around creative designs and quality materials. Currently in its early stage, gathering feedback ahead of a full-scale launch.</p>
+      </div>
+    </div>
+    <div class="company-row">
+      <div class="company-idx">— / VISION</div>
+      <div>
+        <h3>The Bigger Picture</h3>
+        <div class="company-tagline">Where it's all headed</div>
+        <p>To grow Lyzonix into a multi-service platform that supports businesses and inspires innovation across industries — while building consumer brands, like Sanjhex, that earn their own identity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal section-head">
+    <div class="eyebrow">Toolbox</div>
+    <h2>Skills</h2>
+  </div>
+  <div class="skills skills-wrap reveal">
+    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Node.js</span>
+    <span>React.js</span><span>Vue.js</span><span>Express.js</span><span>Flutter</span>
+    <span>Database Management</span><span>UI/UX Design</span>
+    <span>Business Strategy</span><span>Negotiation</span><span>Emotional Intelligence</span>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal section-head">
+    <div class="eyebrow">Path So Far</div>
+    <h2>Experience</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <h3>Portfolio Assistant</h3>
+      <div class="meta">WIPRO</div>
+      <p>Supported portfolio-related work, building hands-on exposure to enterprise process and structure.</p>
+    </div>
+    <div class="tl-item">
+      <h3>Internship</h3>
+      <div class="meta">SOPRA STERIA</div>
+      <p>Gained practical industry experience early in my professional journey.</p>
+    </div>
+    <div class="tl-item">
+      <h3>React.js Certification</h3>
+      <div class="meta">CERTIFICATION</div>
+      <p>Built strong front-end fundamentals applied directly to Lyzonix's projects.</p>
+    </div>
+    <div class="tl-item">
+      <h3>Web Development</h3>
+      <div class="meta">SELF-DRIVEN</div>
+      <p>Hands-on building across HTML, CSS, JavaScript and modern frameworks.</p>
+    </div>
+    <div class="tl-item">
+      <h3>NGO Volunteer</h3>
+      <div class="meta">COMMUNITY</div>
+      <p>Contributed time toward community-focused initiatives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="reveal section-head">
+    <div class="eyebrow">Milestones</div>
+    <h2>Achievements</h2>
+  </div>
+  <div class="ach-grid reveal">
+    <div class="ach-cell"><div class="mark">✦</div><h4>Coding Club Contribution</h4><p>Active contributor to coding community initiatives.</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>WIPRO Assistant</h4><p>Portfolio assistant role at a global IT leader.</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>Sopra Steria Intern</h4><p>Internship at a leading European tech consultancy.</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>Chemistry Excellence</h4><p>Strong academic record in B.Sc Chemistry.</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>Multiple Projects</h4><p>Delivered several independent and freelance builds.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal section-head">
+    <div class="eyebrow">Kind Words</div>
+    <h2>Testimonials</h2>
+    <p class="lead">Replace these with real reviews from your clients, collaborators, or mentors.</p>
+  </div>
+
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Add a real review here from a client or collaborator — what it was like working with Lali and the result you got."</p>
+      <div class="testi-person">
+        <div class="testi-avatar">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#1c1d29"/>
+            <circle cx="50" cy="38" r="18" fill="#d4af6a"/>
+            <path d="M50 60c-22 0-34 14-34 32v8h68v-8c0-18-12-32-34-32z" fill="#c97a6d"/>
+          </svg>
+        </div>
+        <div class="who"><b>Client Name</b><span>Role, Company</span></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Add a second testimonial — keep it specific, mention the project or outcome for credibility."</p>
+      <div class="testi-person">
+        <div class="testi-avatar">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#1c1d29"/>
+            <circle cx="50" cy="36" r="17" fill="#e8cd96"/>
+            <path d="M50 58c-20 0-32 13-32 30v12h64v-12c0-17-12-30-32-30z" fill="#9a96a8"/>
+          </svg>
+        </div>
+        <div class="who"><b>Client Name</b><span>Role, Company</span></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Add a third testimonial. Three real reviews with names and photos build far more trust than generic praise."</p>
+      <div class="testi-person">
+        <div class="testi-avatar">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#1c1d29"/>
+            <circle cx="50" cy="37" r="18" fill="#c97a6d"/>
+            <path d="M50 59c-21 0-33 14-33 31v10h66v-10c0-17-12-31-33-31z" fill="#d4af6a"/>
+          </svg>
+        </div>
+        <div class="who"><b>Client Name</b><span>Role, Company</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="testi-note reveal">Tip: swap the placeholder text and names above for real feedback. Avatars here are simple illustrated icons (not real photos) — keep it this way unless you have a real person's permission to use their actual photo.</p>
+</section>
+
+<!-- SANJHEX SHOP -->
+<section id="shop">
+  <div class="reveal section-head">
+    <div class="eyebrow">The Brand</div>
+    <h2>Sanjhex Store</h2>
+  </div>
+
+  <div class="shop-banner reveal">
+    <div>
+      <h3>Unisex Streetwear — Coming Soon</h3>
+      <p>Sanjhex is in its early stage, refining product and gathering feedback ahead of full launch. Drop a message to get early access.</p>
+    </div>
+    <a href="https://lalikumari6207-eng.github.io/Sanjhex-clothing/" class="btn btn-solid">Visit Sanjhex →</a>
+  </div>
+
+  <div class="shop reveal">
+    <div class="product">
+      <div class="ph">Oversized Tee</div>
+      <h4>Sanjhex Essential Tee</h4>
+      <div class="price">Coming Soon</div>
+      <button>Notify Me</button>
+    </div>
+    <div class="product">
+      <div class="ph">Hoodie</div>
+      <h4>Sanjhex Street Hoodie</h4>
+      <div class="price">Coming Soon</div>
+      <button>Notify Me</button>
+    </div>
+    <div class="product">
+      <div class="ph">New Drop</div>
+      <h4>Sanjhex Capsule 01</h4>
+      <div class="price">Coming Soon</div>
+      <button>Notify Me</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="reveal section-head">
+    <div class="eyebrow">Let's Talk</div>
+    <h2>Connect</h2>
+  </div>
+  <div class="connect-wrap reveal">
+    <a class="connect-row" href="mailto:lalikumari6207@gmail.com"><span class="label">Email</span><span class="arrow">↗</span></a>
+    <a class="connect-row" href="https://in.linkedin.com/in/lali-bhardwaj-ceo" target="_blank" rel="noopener"><span class="label">LinkedIn</span><span class="arrow">↗</span></a>
+    <a class="connect-row" href="https://youtube.com/@explorewithlali04" target="_blank" rel="noopener"><span class="label">YouTube</span><span class="arrow">↗</span></a>
+    <a class="connect-row" href="https://lyzonixtechnologies.online" target="_blank" rel="noopener"><span class="label">Lyzonix Technologies</span><span class="arrow">↗</span></a>
+    <a class="connect-row" href="https://lalikumari6207-eng.github.io/Sanjhex-clothing/" target="_blank" rel="noopener"><span class="label">Sanjhex</span><span class="arrow">↗</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 <b>Lali Kumari</b> — Founder &amp; CEO, Lyzonix Technologies. Built &amp; developed by Lyzonix Technologies.
+</footer>
+
+<script>
+// loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hide'), 900);
+});
+
+// menu
+function toggleMenu(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('scrim').classList.toggle('show');
+}
+
+// scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+
+// particle bg
+const c = document.getElementById('bg');
+const x = c.getContext('2d');
+function resize(){ c.width = innerWidth; c.height = innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let particles = [...Array(60)].map(() => ({
+  x: Math.random()*c.width,
+  y: Math.random()*c.height,
+  r: Math.random()*1.4 + 0.4,
+  s: Math.random()*0.35 + 0.08
+}));
+
+function draw(){
+  x.clearRect(0,0,c.width,c.height);
+  particles.forEach(p => {
+    x.fillStyle = 'rgba(212,175,106,0.55)';
+    x.beginPath();
+    x.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    x.fill();
+    if(!reduceMotion){
+      p.y -= p.s;
+      if(p.y < -5){ p.y = c.height + 5; p.x = Math.random()*c.width; }
+    }
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
