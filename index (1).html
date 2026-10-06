@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lali Kumari | Full Stack Developer — Lyzonix Technologies</title>
+<meta name="description" content="Lali Kumari — Full Stack Developer and Founder of Lyzonix Technologies, from Bihar, India." />
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0a12;--ink-soft:#11121c;--panel:#15161f;--line:rgba(245,240,230,0.09);--gold:#d4af6a;--gold-soft:#e8cd96;--rose:#c97a6d;--cream:#f5f0e6;--muted:#9a96a8;--maxw:1140px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6}
+::selection{background:var(--gold);color:#1a1208}
+h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--gold);display:inline-block}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:2;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#loader{position:fixed;inset:0;background:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;transition:opacity .6s ease,visibility .6s ease;gap:18px}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-mark{font-family:'Fraunces',serif;font-size:15px;letter-spacing:0.35em;color:var(--gold)}
+.loader-bar{width:160px;height:1px;background:var(--line);position:relative;overflow:hidden}
+.loader-bar::after{content:"";position:absolute;left:-40%;top:0;width:40%;height:100%;background:var(--gold);animation:loadsweep 1.1s ease-in-out infinite}
+@keyframes loadsweep{0%{left:-40%}100%{left:100%}}
+canvas#bg{position:fixed;top:0;left:0;z-index:0;opacity:0.5}
+nav.topnav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:22px 5vw;backdrop-filter:blur(10px);background:linear-gradient(to bottom,rgba(10,10,18,0.85),transparent)}
+.brand{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:0.02em}
+.brand span{color:var(--gold)}
+.menu-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(255,255,255,0.02);transition:.3s;flex-direction:column;gap:4px}
+.menu-btn:hover{border-color:var(--gold)}
+.menu-btn span{width:16px;height:1px;background:var(--cream);display:block}
+.sidebar{position:fixed;top:0;right:-340px;width:320px;height:100%;background:var(--ink-soft);border-left:1px solid var(--line);transition:right .45s cubic-bezier(.65,0,.35,1);z-index:600;padding:100px 40px 40px;overflow-y:auto}
+.sidebar.open{right:0}
+.sidebar .eyebrow{margin-bottom:24px}
+.sidebar a{display:block;padding:12px 0;text-decoration:none;font-family:'Fraunces',serif;font-size:21px;color:var(--cream);border-bottom:1px solid var(--line);transition:.25s}
+.sidebar a:hover{color:var(--gold);padding-left:8px}
+.sidebar-close{position:absolute;top:28px;right:28px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);z-index:550;opacity:0;visibility:hidden;transition:.4s}
+.scrim.show{opacity:1;visibility:visible}
+header.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 5vw 80px}
+.hero-photos{display:flex;gap:18px;margin-bottom:38px;opacity:0;animation:riseIn 1s ease forwards .15s}
+.hero-photos img{width:108px;height:108px;object-fit:cover;border-radius:50%;border:1px solid var(--line);box-shadow:0 0 0 6px rgba(212,175,106,0.06),0 20px 40px rgba(0,0,0,0.5)}
+.hero-photos img:first-child{margin-top:14px}
+header.hero .eyebrow{justify-content:center;margin-bottom:22px;opacity:0;animation:riseIn 1s ease forwards .3s}
+header.hero .eyebrow::after{content:"";width:24px;height:1px;background:var(--gold)}
+header.hero h1{font-size:clamp(40px,8vw,92px);line-height:1.02;font-weight:600;opacity:0;animation:riseIn 1s ease forwards .45s}
+header.hero h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--gold-soft),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header.hero .role{margin-top:22px;font-size:clamp(15px,2.4vw,19px);color:var(--muted);max-width:560px;opacity:0;animation:riseIn 1s ease forwards .6s}
+header.hero .role b{color:var(--cream);font-weight:600}
+.hero-cta{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;justify-content:center;opacity:0;animation:riseIn 1s ease forwards .75s}
+.btn{padding:14px 30px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.02em;display:inline-flex;align-items:center;gap:8px;transition:.3s;border:1px solid transparent;cursor:pointer}
+.btn-solid{background:var(--gold);color:#1a1208}
+.btn-solid:hover{background:var(--gold-soft);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.stats{display:flex;gap:60px;margin-top:80px;flex-wrap:wrap;justify-content:center;opacity:0;animation:riseIn 1s ease forwards .9s}
+.stat{text-align:center}
+.stat .num{font-family:'Fraunces',serif;font-size:36px;color:var(--gold-soft)}
+.stat .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);width:1px;height:50px;background:linear-gradient(var(--gold),transparent);opacity:0.6}
+main{position:relative;z-index:1}
+section{max-width:var(--maxw);margin:0 auto;padding:130px 5vw 0;scroll-margin-top:60px}
+section:last-of-type{padding-bottom:130px}
+.section-head{margin-bottom:56px;max-width:640px}
+.section-head h2{font-size:clamp(28px,4.4vw,46px);margin-top:14px;font-weight:600}
+.section-head p.lead{margin-top:16px;color:var(--muted);font-size:16px;max-width:560px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.6,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:start}
+.about-grid p{color:#cfc9d8;font-size:16.5px;margin-bottom:18px}
+.about-grid p:last-child{margin-bottom:0}
+.pull-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:34px;position:relative}
+.pull-card::before{content:"“";font-family:'Fraunces',serif;font-size:80px;color:var(--gold);opacity:0.35;position:absolute;top:0;left:24px;line-height:1}
+.pull-card p{font-family:'Fraunces',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--cream);margin-top:30px}
+.pull-card .tag{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:0.05em}
+.company-list,.ach-grid,.connect-wrap{background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.company-list,.connect-wrap{display:flex;flex-direction:column;gap:1px}
+.company-row{background:var(--ink-soft);padding:38px 40px;display:grid;grid-template-columns:120px 1fr;gap:30px;transition:.35s}
+.company-row:hover{background:var(--panel)}
+.company-idx{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:13px;letter-spacing:0.05em}
+.company-row h3{font-size:24px;margin-bottom:6px}
+.company-tagline{color:var(--gold-soft);font-size:13px;font-family:'JetBrains Mono',monospace;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.06em}
+.company-row p{color:#cfc9d8;font-size:15px;max-width:620px}
+.company-row .btn{margin-top:22px}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:12px}
+.skills span{display:inline-flex;align-items:center;padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:14px;color:var(--cream);transition:.3s}
+.skills span:hover{border-color:var(--gold);color:var(--gold-soft);transform:translateY(-3px)}
+.timeline{position:relative;padding-left:30px;border-left:1px solid var(--line)}
+.tl-item{position:relative;padding-bottom:42px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(212,175,106,0.15)}
+.tl-item h3{font-size:18px;font-weight:600}
+.tl-item .meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);margin:4px 0 8px}
+.tl-item p{color:var(--muted);font-size:14.5px}
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px}
+.ach-cell{background:var(--ink-soft);padding:34px 28px;transition:.3s}
+.ach-cell:hover{background:var(--panel)}
+.ach-cell .mark{font-size:22px;color:var(--gold);margin-bottom:14px}
+.ach-cell h4{font-size:16px;font-weight:600;margin-bottom:6px}
+.ach-cell p{font-size:13.5px;color:var(--muted)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.testi-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:18px}
+.testi-stars{color:var(--gold);font-size:14px;letter-spacing:2px}
+.testi-quote{font-size:14.5px;color:#cfc9d8;line-height:1.65}
+.testi-person{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.testi-avatar{width:46px;height:46px;border-radius:50%;flex-shrink:0;overflow:hidden;border:1px solid var(--line)}
+.testi-avatar svg{width:100%;height:100%;display:block}
+.testi-person .who b{display:block;font-size:14px;font-weight:600}
+.testi-person .who span{display:block;font-size:12px;color:var(--muted)}
+.connect-row{background:var(--ink-soft);padding:24px 34px;display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:var(--cream);transition:.3s}
+.connect-row:hover{background:var(--panel);padding-left:42px}
+.connect-row .label{font-family:'Fraunces',serif;font-size:19px}
+.connect-row .arrow{color:var(--gold);font-size:18px;transition:.3s}
+.connect-row:hover .arrow{transform:translateX(6px)}
+footer{text-align:center;padding:50px 20px 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:80px}
+footer b{color:var(--gold-soft)}
+@media(max-width:780px){.about-grid{grid-template-columns:1fr}.company-row{grid-template-columns:1fr}section{padding-top:90px}.hero-photos img{width:84px;height:84px}.stats{gap:36px}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}}
+a:focus-visible,button:focus-visible,.menu-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="loader-mark">L A L I</div><div class="loader-bar"></div></div>
+<canvas id="bg"></canvas>
+
+<nav class="topnav">
+  <div class="brand">Lali <span>Kumari</span></div>
+  <div class="menu-btn" id="menuBtn" onclick="toggleMenu()" role="button" aria-label="Open menu" tabindex="0"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="scrim" id="scrim" onclick="toggleMenu()"></div>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-close" onclick="toggleMenu()">✕</div>
+  <div class="eyebrow">Navigate</div>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#company" onclick="toggleMenu()">Company</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#experience" onclick="toggleMenu()">Experience</a>
+  <a href="#qualification" onclick="toggleMenu()">Qualification</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+  <a href="#book" onclick="toggleMenu()">My Book</a>
+  <a href="#testimonials" onclick="toggleMenu()">Testimonials</a>
+  <a href="#connect" onclick="toggleMenu()">Connect</a>
+</div>
+
+<header class="hero">
+  <div class="hero-photos">
+    <img src="1775923627380~2.png" alt="Lali Kumari portrait">
+    <img src="1775047476034.png" alt="Lali Kumari">
+  </div>
+  <div class="eyebrow">Full Stack Developer &amp; Founder</div>
+  <h1>I'm <em>Lali Kumari</em></h1>
+  <p class="role">Full Stack Developer from Bihar, building <b>Lyzonix Technologies</b>, an IT solutions company — execution over ideas, consistency over shortcuts.</p>
+  <div class="hero-cta">
+    <a href="https://lyzonixtechnologies.online" target="_blank" rel="noopener" class="btn btn-solid">Visit Lyzonix Website</a>
+    <a href="#connect" class="btn btn-ghost">Get In Touch</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num">1</div><div class="lbl">Company Founded</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl">Skills &amp; Tools</div></div>
+    <div class="stat"><div class="num">B.Sc</div><div class="lbl">Chemistry</div></div>
+  </div>
+  <div class="scroll-cue"></div>
+</header>
+
+<main>
+
+<section id="about">
+  <div class="reveal">
+    <div class="eyebrow">Who I Am</div>
+    <h2 class="section-head" style="margin-bottom:48px;">About Me</h2>
+  </div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p>I am Lali Kumari, Full Stack Developer and Founder &amp; CEO of Lyzonix Technologies.</p>
+      <p>I am from Bihar, India, and I am pursuing a B.Sc in Chemistry — a background that gave me strong analytical thinking and an eye for detail I now apply to building products.</p>
+      <p>I am a visionary entrepreneur focused on building scalable digital solutions. I don't just follow trends — I create them. With a strong foundation in technology and business knowledge, I develop innovative IT solutions that help businesses grow faster and smarter.</p>
+      <p>I believe in execution over ideas, consistency over shortcuts, and building something that creates real value. My mission is to establish Lyzonix as a powerful multi-service company.</p>
+      <p>I am also an author. I am not a graduate in this field, but what I feel, what I explore and what I went through in my struggle phase became my writing. I have written my own book, <i>Mindful Roots, Resilient Wings</i>, and I continue to write more.</p>
+    </div>
+    <div class="reveal pull-card">
+      <p>I don't just follow trends — I create them.</p>
+      <div class="tag">— LALI KUMARI, FOUNDER &amp; CEO</div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="reveal section-head">
+    <div class="eyebrow">What I'm Building</div>
+    <h2>Company</h2>
+    <p class="lead">One company, one philosophy — build things that create real, lasting value.</p>
+  </div>
+  <div class="company-list reveal">
+    <div class="company-row">
+      <div class="company-idx">01 / TECH</div>
+      <div>
+        <h3>Lyzonix Technologies</h3>
+        <div class="company-tagline">IT Solutions &amp; Digital Services</div>
+        <p>A growing startup focused on delivering innovative IT solutions — including web development, digital solutions, and support — that help businesses build a strong digital presence while simplifying operations. Beyond services, Lyzonix is also building its own products, creating a true ecosystem of technology and business innovation.</p>
+        <a href="https://lyzonixtechnologies.online" target="_blank" rel="noopener" class="btn btn-solid">Visit Lyzonix Website →</a>
+      </div>
+    </div>
+    <div class="company-row">
+      <div class="company-idx">— / VISION</div>
+      <div>
+        <h3>The Bigger Picture</h3>
+        <div class="company-tagline">Where it's all headed</div>
+        <p>To grow Lyzonix into a multi-service platform that supports businesses and inspires innovation across industries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="reveal section-head">
+    <div class="eyebrow">Toolbox</div>
+    <h2>Skills</h2>
+  </div>
+  <div class="skills skills-wrap reveal">
+    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Node.js (server.js &amp; packages)</span>
+    <span>Excel (Data, Formulas &amp; Reports)</span><span>Business Knowledge</span>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="reveal section-head">
+    <div class="eyebrow">Path So Far</div>
+    <h2>Experience</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <h3>Full Stack Developer</h3>
+      <div class="meta">LYZONIX TECHNOLOGIES</div>
+      <p>Building websites and web applications end to end — front end, back end and deployment — for clients and for Lyzonix's own products.</p>
+    </div>
+    <div class="tl-item">
+      <h3>Junior Class Teaching</h3>
+      <div class="meta">TEACHING</div>
+      <p>Taught junior classes, sharing what I know in a simple and clear way.</p>
+    </div>
+    <div class="tl-item">
+      <h3>NGO Volunteer</h3>
+      <div class="meta">COMMUNITY</div>
+      <p>Contributed time toward community-focused initiatives.</p>
+    </div>
+  </div>
+</section>
+
+<section id="qualification">
+  <div class="reveal section-head">
+    <div class="eyebrow">Education</div>
+    <h2>Qualification</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <h3>Coding Course</h3>
+      <div class="meta">2021 – 2023 · CODE ACADEMY</div>
+      <p>2-year coding course from Code Academy.</p>
+    </div>
+    <div class="tl-item">
+      <h3>12th (Intermediate)</h3>
+      <div class="meta">2021 – 2023</div>
+      <p>Completed 12th alongside the coding course.</p>
+    </div>
+    <div class="tl-item">
+      <h3>Coding Competitions</h3>
+      <div class="meta">FROM 2022</div>
+      <p>Started taking part in coding club competitions after completing 12th and the course.</p>
+    </div>
+    <div class="tl-item">
+      <h3>B.Sc (Chemistry)</h3>
+      <div class="meta">2023 – 2027</div>
+      <p>Graduation in progress.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="reveal section-head">
+    <div class="eyebrow">Built So Far</div>
+    <h2>Projects</h2>
+    <p class="lead">After learning to code, I built many websites, including:</p>
+  </div>
+  <div class="ach-grid reveal">
+    <div class="ach-cell"><div class="mark">✦</div><h4>Portfolio Website</h4><p>Personal and professional portfolio websites.</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>NGO Website</h4><p>Website built for an NGO.</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>Firm Website</h4><p>Business website for a firm.</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>Academy Website</h4><p>Website built for an academy.</p></div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="reveal section-head">
+    <div class="eyebrow">Milestones</div>
+    <h2>Achievements</h2>
+  </div>
+  <div class="ach-grid reveal">
+    <div class="ach-cell"><div class="mark">✦</div><h4>3rd Rank — Coding Club Competition</h4><p>2022</p></div>
+    <div class="ach-cell"><div class="mark">✦</div><h4>5th Rank — Coding Club Competition</h4><p>2024</p></div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="reveal section-head">
+    <div class="eyebrow">Author</div>
+    <h2>My Book</h2>
+  </div>
+  <div class="company-list reveal">
+    <div class="company-row">
+      <div class="company-idx">BOOK</div>
+      <div>
+        <h3>Mindful Roots, Resilient Wings</h3>
+        <div class="company-tagline">Self-Improvement · Print Book · 150 pages</div>
+        <p>A complete guide to mental health, identity, and purpose for Indian teenagers. Written from my own experience, it reads like a conversation that should be happening in Indian homes, schools, and hearts.</p>
+        <a href="https://store.pothi.com/book/lali-kumari-mindful-root-resilient-wings/" target="_blank" rel="noopener" class="btn btn-solid">Get the Book on Pothi →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="reveal section-head">
+    <div class="eyebrow">Kind Words</div>
+    <h2>Testimonials</h2>
+    <p class="lead">she's great invotive lady i had ever seen.</p>
+  </div>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Lali Kumari is an emerging developer and author known for her innovative thinking, strong work ethic, and commitment to creating meaningful impact through technology and knowledge."</p>
+      <div class="testi-person">
+        <div class="testi-avatar"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#1c1d29"/><circle cx="50" cy="38" r="18" fill="#d4af6a"/><path d="M50 60c-22 0-34 14-34 32v8h68v-8c0-18-12-32-34-32z" fill="#c97a6d"/></svg></div>
+        <div class="who"><b>Itachi</b><span>japan</span></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"she's great innovation lady i had ever see ."</p>
+      <div class="testi-person">
+        <div class="testi-avatar"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#1c1d29"/><circle cx="50" cy="36" r="17" fill="#e8cd96"/><path d="M50 58c-20 0-32 13-32 30v12h64v-12c0-17-12-30-32-30z" fill="#9a96a8"/></svg></div>
+        <div class="who"><b>jenifer launsa</b><span>newzealand</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="reveal section-head">
+    <div class="eyebrow">Let's Talk</div>
+    <h2>Connect</h2>
+  </div>
+  <div class="connect-wrap reveal">
+    <a class="connect-row" href="mailto:lalikumari6207@gmail.com"><span class="label">Email</span><span class="arrow">↗</span></a>
+    <a class="connect-row" href="https://in.linkedin.com/in/lali-bhardwaj-ceo" target="_blank" rel="noopener"><span class="label">LinkedIn</span><span class="arrow">↗</span></a>
+    <a class="connect-row" href="https://youtube.com/@explorewithlali04" target="_blank" rel="noopener"><span class="label">YouTube</span><span class="arrow">↗</span></a>
+    <a class="connect-row" href="https://lyzonixtechnologies.online" target="_blank" rel="noopener"><span class="label">Lyzonix Technologies</span><span class="arrow">↗</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>© 2026 <b>Lali Kumari</b> — Full Stack Developer, Lyzonix Technologies. Built &amp; developed by Lyzonix Technologies.</footer>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hide'),900)});
+function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('scrim').classList.toggle('show')}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const c=document.getElementById('bg'),x=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight}
+resize();addEventListener('resize',resize);
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ps=[...Array(60)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.4+0.4,s:Math.random()*0.35+0.08}));
+function draw(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{x.fillStyle='rgba(212,175,106,0.55)';x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fill();if(!rm){p.y-=p.s;if(p.y<-5){p.y=c.height+5;p.x=Math.random()*c.width}}});requestAnimationFrame(draw)}
+draw();
+</script>
+</body>
+</html>
